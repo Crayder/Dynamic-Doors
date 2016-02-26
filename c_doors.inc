@@ -336,6 +336,29 @@ stock DestroyDynamicDoor(Door:doorid)
 
 /**--------------------------------------------------------------------------**\
 <summary>
+	DestroyAllDynamicDoors
+</summary>
+<returns>
+	1 on success
+</returns>
+<remarks>
+    Safe way to destroy all doors.
+</remarks>
+\**--------------------------------------------------------------------------**/
+
+stock DestroyAllDynamicDoors()
+{    
+    foreach(new i: __Door) {
+        __C_DoorInfo[i][cd_State] = DOOR_STATE_CLOSED;
+        DestroyDynamicObject(__C_DoorInfo[i][cd_ObjectID]);
+        Iter_SafeRemove(__Door, i, i);
+    }
+    
+    return 1;
+}
+
+/**--------------------------------------------------------------------------**\
+<summary>
 	bool:IsValidDynamicDoor
 </summary>
 	<param name="Door:doorid">Door ID</param>
@@ -489,6 +512,7 @@ stock DoorType:GetDynamicDoorType(Door:doorid)
 	DOOR_STATE_OPEN or DOOR_STATE_CLOSED on success
 </returns>
 <remarks>
+
 </remarks>
 \**--------------------------------------------------------------------------**/
 
