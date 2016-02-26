@@ -22,22 +22,22 @@
 
 #### CreateDynamicDoor
 >* **Parameters:**
->	* `model`: model_INFO
->	* `DoorType:type`: DoorType:type_INFO
->	* `Float:X`: Float:X_INFO
->	* `Float:Y`: Float:Y_INFO
->	* `Float:Z`: Float:Z_INFO
->	* `Float:rX`: Float:rX_INFO
->	* `Float:rY`: Float:rY_INFO
->	* `Float:rZ`: Float:rZ_INFO
->	* `Float:eX`: Float:eX_INFO
->	* `Float:eY`: Float:eY_INFO
->	* `Float:eZ`: Float:eZ_INFO
->	* `Float:erX`: Float:erX_INFO
->	* `Float:erY`: Float:erY_INFO
->	* `Float:erZ`: Float:erZ_INFO
->	* `world`: world_INFO
->	* `interior`: interior_INFO
+>	* `model`: model
+>	* `DoorType:type`: DoorType:type
+>	* `Float:X`: Float:X
+>	* `Float:Y`: Float:Y
+>	* `Float:Z`: Float:Z
+>	* `Float:rX`: Float:rX
+>	* `Float:rY`: Float:rY
+>	* `Float:rZ`: Float:rZ
+>	* `Float:eX`: Float:eX
+>	* `Float:eY`: Float:eY
+>	* `Float:eZ`: Float:eZ
+>	* `Float:erX`: Float:erX
+>	* `Float:erY`: Float:erY
+>	* `Float:erZ`: Float:erZ
+>	* `world`: world
+>	* `interior`: interior
 >* **Returns:**
 >	* The door's ID with the 'Door' tag.
 >* **Remarks:**
@@ -47,18 +47,18 @@
 
 #### CreateRotatingDoor
 >* **Parameters:**
->	* `model`: model_INFO
->	* `Float:X`: Float:X_INFO
->	* `Float:Y`: Float:Y_INFO
->	* `Float:Z`: Float:Z_INFO
->	* `Float:rX`: Float:rX_INFO
->	* `Float:rY`: Float:rY_INFO
->	* `Float:rZ`: Float:rZ_INFO
->	* `Float:erX`: Float:erX_INFO
->	* `Float:erY`: Float:erY_INFO
->	* `Float:erZ`: Float:erZ_INFO
->	* `world`: world_INFO
->	* `interior`: interior_INFO
+>	* `model`: model
+>	* `Float:X`: Float:X
+>	* `Float:Y`: Float:Y
+>	* `Float:Z`: Float:Z
+>	* `Float:rX`: Float:rX
+>	* `Float:rY`: Float:rY
+>	* `Float:rZ`: Float:rZ
+>	* `Float:erX`: Float:erX
+>	* `Float:erY`: Float:erY
+>	* `Float:erZ`: Float:erZ
+>	* `world`: world
+>	* `interior`: interior
 >* **Returns:**
 >	* The door's ID with the 'Door' tag.
 >* **Remarks:**
@@ -68,18 +68,18 @@
 
 #### CreateSlidingDoor
 >* **Parameters:**
->	* `model`: model_INFO
->	* `Float:X`: Float:X_INFO
->	* `Float:Y`: Float:Y_INFO
->	* `Float:Z`: Float:Z_INFO
->	* `Float:eX`: Float:eX_INFO
->	* `Float:eY`: Float:eY_INFO
->	* `Float:eZ`: Float:eZ_INFO
->	* `Float:rX`: Float:rX_INFO
->	* `Float:rY`: Float:rY_INFO
->	* `Float:rZ`: Float:rZ_INFO
->	* `world`: world_INFO
->	* `interior`: interior_INFO
+>	* `model`: model
+>	* `Float:X`: Float:X
+>	* `Float:Y`: Float:Y
+>	* `Float:Z`: Float:Z
+>	* `Float:eX`: Float:eX
+>	* `Float:eY`: Float:eY
+>	* `Float:eZ`: Float:eZ
+>	* `Float:rX`: Float:rX
+>	* `Float:rY`: Float:rY
+>	* `Float:rZ`: Float:rZ
+>	* `world`: world
+>	* `interior`: interior
 >* **Returns:**
 >	* The door's ID with the 'Door' tag.
 >* **Remarks:**
@@ -89,19 +89,19 @@
 
 #### CreateTeleportingDoor
 >* **Parameters:**
->	* `model`: model_INFO
->	* `Float:X`: Float:X_INFO
->	* `Float:Y`: Float:Y_INFO
->	* `Float:Z`: Float:Z_INFO
->	* `Float:rX`: Float:rX_INFO
->	* `Float:rY`: Float:rY_INFO
->	* `Float:rZ`: Float:rZ_INFO
->	* `Float:eX`: Float:eX_INFO
->	* `Float:eY`: Float:eY_INFO
->	* `Float:eZ`: Float:eZ_INFO
->	* `Float:erZ`: Float:erZ_INFO
->	* `world`: world_INFO
->	* `interior`: interior_INFO
+>	* `model`: model
+>	* `Float:X`: Float:X
+>	* `Float:Y`: Float:Y
+>	* `Float:Z`: Float:Z
+>	* `Float:rX`: Float:rX
+>	* `Float:rY`: Float:rY
+>	* `Float:rZ`: Float:rZ
+>	* `Float:eX`: Float:eX
+>	* `Float:eY`: Float:eY
+>	* `Float:eZ`: Float:eZ
+>	* `Float:erZ`: Float:erZ
+>	* `world`: world
+>	* `interior`: interior
 >* **Returns:**
 >	* The door's ID with the 'Door' tag.
 >* **Remarks:**
@@ -111,9 +111,9 @@
 
 #### ActivateDynamicDoor
 >* **Parameters:**
->	* `Door:doorid`: Door:doorid_INFO
->	* `Float:speed`: Float:speed_INFO
->	* `playerid`: playerid_INFO
+>	* `Door:doorid`: Door:doorid
+>	* `Float:speed`: Float:speed
+>	* `playerid`: playerid
 >* **Returns:**
 >	* 0 on failure, causes: Non-existent door, player not connected, player not in range
 >	* 1 on success
@@ -125,7 +125,7 @@
 
 #### DestroyDynamicDoor
 >* **Parameters:**
->	* `Door:doorid`: Door:doorid_INFO
+>	* `Door:doorid`: Door:doorid
 >* **Returns:**
 >	* 0 on failure, causes: Non-existent door
 >	* 1 on success
@@ -146,7 +146,7 @@
 
 #### IsValidDynamicDoor
 >* **Parameters:**
->	* `Door:doorid`: Door:doorid_INFO
+>	* `Door:doorid`: Door:doorid
 >* **Returns:**
 >	* 0 if door is not valid
 >	* 1 if door is valid
@@ -157,7 +157,7 @@
 
 #### GetDynamicDoorObjectID
 >* **Parameters:**
->	* `Door:doorid`: Door:doorid_INFO
+>	* `Door:doorid`: Door:doorid
 >* **Returns:**
 >	* Streamer ID if door is valid
 >	* INVALID_OBJECT_ID if door is not valid
@@ -168,8 +168,8 @@
 
 #### IsPlayerInRangeOfAnyDynamicDoor
 >* **Parameters:**
->	* `playerid`: playerid_INFO
->	* `Float:range`: Float:range_INFO
+>	* `playerid`: playerid
+>	* `Float:range`: Float:range
 >* **Returns:**
 >	* Door ID of first door found
 >	* INVALID_DOOR_ID if not
@@ -180,9 +180,9 @@
 
 #### IsPlayerInRangeOfDynamicDoor
 >* **Parameters:**
->	* `playerid`: playerid_INFO
->	* `Door:door`: Door:door_INFO
->	* `Float:range`: Float:range_INFO
+>	* `playerid`: playerid
+>	* `Door:door`: Door:door
+>	* `Float:range`: Float:range
 >* **Returns:**
 >	* 0 on failure
 >	* 1 on success
@@ -196,10 +196,10 @@
 
 #### GetDynamicDoorPos
 >* **Parameters:**
->	* `Door:door`: Door:door_INFO
->	* `&Float:X`: &Float:X_INFO
->	* `&Float:Y`: &Float:Y_INFO
->	* `&Float:Z`: &Float:Z_INFO
+>	* `Door:door`: Door:door
+>	* `&Float:X`: &Float:X
+>	* `&Float:Y`: &Float:Y
+>	* `&Float:Z`: &Float:Z
 >* **Returns:**
 >	* 0 on failure, causes: Non-existent Door
 >	* 1 on success
@@ -210,10 +210,10 @@
 
 #### GetDynamicDoorRot
 >* **Parameters:**
->	* `Door:door`: Door:door_INFO
->	* `&Float:rX`: &Float:rX_INFO
->	* `&Float:rY`: &Float:rY_INFO
->	* `&Float:rZ`: &Float:rZ_INFO
+>	* `Door:door`: Door:door
+>	* `&Float:rX`: &Float:rX
+>	* `&Float:rY`: &Float:rY
+>	* `&Float:rZ`: &Float:rZ
 >* **Returns:**
 >	* 0 on failure, causes: Non-existent Door
 >	* 1 on success
@@ -224,7 +224,7 @@
 
 #### GetDynamicDoorType
 >* **Parameters:**
->	* `Door:door`: Door:door_INFO
+>	* `Door:door`: Door:door
 >* **Returns:**
 >	* INVALID_DOOR_TYPE on failure, causes: Non-existent Door
 >	* DOOR_TYPE_ROTATING, DOOR_TYPE_SLIDING, or DOOR_TYPE_TELEPORTING on success
@@ -235,7 +235,7 @@
 
 #### GetDynamicDoorState
 >* **Parameters:**
->	* `Door:door`: Door:door_INFO
+>	* `Door:door`: Door:door
 >* **Returns:**
 >	* INVALID_DOOR_STATE on failure, causes: Non-existent Door
 >	* DOOR_STATE_OPEN or DOOR_STATE_CLOSED on success
@@ -243,5 +243,4 @@
 >
  
 ***
-
 
