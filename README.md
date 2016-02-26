@@ -19,6 +19,9 @@ Door:IsPlayerInRangeOfAnyDynamicDoor(playerid, Float:range = 3.0);
 IsPlayerInRangeOfDynamicDoor(playerid, Door:doorid, Float:range = 3.0);
 GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z);
 GetDynamicDoorRot(Door:doorid, &Float:rX, &Float:rY, &Float:rZ);
+
+DoorType:GetDynamicDoorPos(Door:doorid);
+DoorState:GetDynamicDoorRot(Door:doorid);
 ```
 
 
