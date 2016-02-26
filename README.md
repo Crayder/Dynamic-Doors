@@ -11,6 +11,7 @@ Door:CreateSlidingDoor(model, Float:X, Float:Y, Float:Z, Float:eX, Float:eY, Flo
 Door:CreateTeleportingDoor(model, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:eX, Float:eY, Float:eZ, Float:erZ, world = -1, interior = -1)
 
 DestroyDynamicDoor(Door:doorid);
+DestroyAllDynamicDoors();
 
 ActivateDynamicDoor(Door:doorid, Float:Speed = 1.0);
 
