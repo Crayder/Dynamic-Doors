@@ -97,6 +97,7 @@ new	__C_DoorInfo[MAX_DOORS][__E_DoorInfo],
 	native Door:CreateTeleportingDoor(model, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:eX, Float:eY, Float:eZ, Float:erZ, world = -1, interior = -1)
 
 	native DestroyDynamicDoor(Door:doorid);
+	native DestroyAllDynamicDoors();
 	
 	native ActivateDynamicDoor(Door:doorid, Float:Speed = 1.0);
 	
@@ -106,8 +107,8 @@ new	__C_DoorInfo[MAX_DOORS][__E_DoorInfo],
 	native GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z);
 	native GetDynamicDoorRot(Door:doorid, &Float:rX, &Float:rY, &Float:rZ);
     
-	native DoorType:GetDynamicDoorPos(Door:doorid);
-	native DoorState:GetDynamicDoorRot(Door:doorid);
+	native DoorType:GetDynamicDoorType(Door:doorid);
+	native DoorState:GetDynamicDoorState(Door:doorid);
 */
 
 /**--------------------------------------------------------------------------**\
