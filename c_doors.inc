@@ -49,6 +49,7 @@ Dynamic Door Include, By: Crayder_______________________________|
 
 enum DoorType
 {
+    INVALID_DOOR_TYPE,
 	DOOR_TYPE_ROTATING,
 	DOOR_TYPE_TELEPORT,
 	DOOR_TYPE_SLIDING
@@ -56,6 +57,7 @@ enum DoorType
 
 enum DoorState
 {
+    INVALID_DOOR_STATE,
 	DOOR_STATE_OPEN,
 	DOOR_STATE_CLOSED
 }
@@ -103,6 +105,9 @@ new	__C_DoorInfo[MAX_DOORS][__E_DoorInfo],
 	native IsPlayerInRangeOfDynamicDoor(playerid, Door:doorid, Float:range = 3.0);
 	native GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z);
 	native GetDynamicDoorRot(Door:doorid, &Float:rX, &Float:rY, &Float:rZ);
+    
+	native DoorType:GetDynamicDoorPos(Door:doorid);
+	native DoorState:GetDynamicDoorRot(Door:doorid);
 */
 
 /**--------------------------------------------------------------------------**\
@@ -454,4 +459,40 @@ stock GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z)
 stock GetDynamicDoorRot(Door:doorid, &Float:rX, &Float:rY, &Float:rZ)
 {
 	return Iter_Contains(__Door, _:doorid) ? GetDynamicObjectRot((__C_DoorInfo[_:doorid][cd_ObjectID]), rX, rY, rZ) : 0;
+}
+
+/**--------------------------------------------------------------------------**\
+<summary>
+	DoorType:GetDynamicDoorType
+</summary>
+	<param name="Door:door">Door ID</param>
+<returns>
+	INVALID_DOOR_TYPE on failure, causes: Non-existent Door
+	DOOR_TYPE_ROTATING, DOOR_TYPE_SLIDING, or DOOR_TYPE_TELEPORTING on success
+</returns>
+<remarks>
+</remarks>
+\**--------------------------------------------------------------------------**/
+
+stock DoorType:GetDynamicDoorType(Door:doorid)
+{
+	return Iter_Contains(__Door, _:doorid) ? (__C_DoorInfo[_:doorid][cd_Type]) : INVALID_DOOR_TYPE;
+}
+
+/**--------------------------------------------------------------------------**\
+<summary>
+	DoorState:GetDynamicDoorState
+</summary>
+	<param name="Door:door">Door ID</param>
+<returns>
+	INVALID_DOOR_STATE on failure, causes: Non-existent Door
+	DOOR_STATE_OPEN or DOOR_STATE_CLOSED on success
+</returns>
+<remarks>
+</remarks>
+\**--------------------------------------------------------------------------**/
+
+stock DoorState:GetDynamicDoorState(Door:doorid)
+{
+	return Iter_Contains(__Door, _:doorid) ? (__C_DoorInfo[_:doorid][cd_State]) : INVALID_DOOR_STATE;
 }
