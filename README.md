@@ -4,21 +4,21 @@
 
 ## Functions:
 
-* [CreateDynamicDoor](README#createdynamicdoor)
-* [CreateRotatingDoor](README#createrotatingdoor)
-* [CreateSlidingDoor](README#createslidingdoor)
-* [CreateTeleportingDoor](README#createteleportingdoor)
-* [ActivateDynamicDoor](README#activatedynamicdoor)
-* [DestroyDynamicDoor](README#destroydynamicdoor)
-* [DestroyAllDynamicDoors](README#destroyalldynamicdoors)
-* [IsValidDynamicDoor](README#isvaliddynamicdoor)
-* [GetDynamicDoorObjectID](README#getdynamicdoorobjectid)
-* [IsPlayerInRangeOfAnyDynamicDoor](README#isplayerinrangeofanydynamicdoor)
-* [IsPlayerInRangeOfDynamicDoor](README#isplayerinrangeofdynamicdoor)
-* [GetDynamicDoorPos](README#getdynamicdoorpos)
-* [GetDynamicDoorRot](README#getdynamicdoorrot)
-* [GetDynamicDoorType](README#getdynamicdoortype)
-* [GetDynamicDoorState](README#getdynamicdoorstate)
+* [CreateDynamicDoor](README.md#createdynamicdoor)
+* [CreateRotatingDoor](README.md#createrotatingdoor)
+* [CreateSlidingDoor](README.md#createslidingdoor)
+* [CreateTeleportingDoor](README.md#createteleportingdoor)
+* [ActivateDynamicDoor](README.md#activatedynamicdoor)
+* [DestroyDynamicDoor](README.md#destroydynamicdoor)
+* [DestroyAllDynamicDoors](README.md#destroyalldynamicdoors)
+* [IsValidDynamicDoor](README.md#isvaliddynamicdoor)
+* [GetDynamicDoorObjectID](README.md#getdynamicdoorobjectid)
+* [IsPlayerInRangeOfAnyDynamicDoor](README.md#isplayerinrangeofanydynamicdoor)
+* [IsPlayerInRangeOfDynamicDoor](README.md#isplayerinrangeofdynamicdoor)
+* [GetDynamicDoorPos](README.md#getdynamicdoorpos)
+* [GetDynamicDoorRot](README.md#getdynamicdoorrot)
+* [GetDynamicDoorType](README.md#getdynamicdoortype)
+* [GetDynamicDoorState](README.md#getdynamicdoorstate)
 
 #### CreateDynamicDoor
 >* **Parameters:**
