@@ -56,8 +56,8 @@ enum DoorType
 
 enum DoorState
 {
-	DOOR_OPEN,
-	DOOR_CLOSED
+	DOOR_STATE_OPEN,
+	DOOR_STATE_CLOSED
 }
 
 enum __E_DoorInfo
@@ -138,25 +138,25 @@ stock Door:CreateDynamicDoor(model, DoorType:type, Float:X, Float:Y, Float:Z, Fl
 	if(i == cellmin)
 		return INVALID_DOOR_ID;
 	
-	__DD[i][cd_ObjectID] = CreateDynamicObject(model, X, Y, Z, rX, rY, rZ, world, interior);
-	__DD[i][cd_Type] = type;
+	__C_DoorInfo[i][cd_ObjectID] = CreateDynamicObject(model, X, Y, Z, rX, rY, rZ, world, interior);
+	__C_DoorInfo[i][cd_Type] = type;
 	
-	__DD[i][cd_StartX] = X;
-	__DD[i][cd_StartY] = Y;
-	__DD[i][cd_StartZ] = Z;
-	__DD[i][cd_EndX] = eX;
-	__DD[i][cd_EndY] = eY;
-	__DD[i][cd_EndZ] = eZ;
+	__C_DoorInfo[i][cd_StartX] = X;
+	__C_DoorInfo[i][cd_StartY] = Y;
+	__C_DoorInfo[i][cd_StartZ] = Z;
+	__C_DoorInfo[i][cd_EndX] = eX;
+	__C_DoorInfo[i][cd_EndY] = eY;
+	__C_DoorInfo[i][cd_EndZ] = eZ;
 	
-	__DD[i][cd_StartRX] = rX;
-	__DD[i][cd_StartRY] = rY;
-	__DD[i][cd_StartRZ] = rZ;
-	__DD[i][cd_EndRX] = erX;
-	__DD[i][cd_EndRY] = erY;
-	__DD[i][cd_EndRZ] = erZ;
+	__C_DoorInfo[i][cd_StartRX] = rX;
+	__C_DoorInfo[i][cd_StartRY] = rY;
+	__C_DoorInfo[i][cd_StartRZ] = rZ;
+	__C_DoorInfo[i][cd_EndRX] = erX;
+	__C_DoorInfo[i][cd_EndRY] = erY;
+	__C_DoorInfo[i][cd_EndRZ] = erZ;
 	
-	__DD[i][cd_World] = world;
-	__DD[i][cd_Interior] = interior;
+	__C_DoorInfo[i][cd_World] = world;
+	__C_DoorInfo[i][cd_Interior] = interior;
 	
 	Iter_Add(__Door, i);
 	
@@ -269,33 +269,33 @@ stock ActivateDynamicDoor(Door:doorid, Float:speed = 1.0, playerid = INVALID_PLA
 	
 	new i = _:doorid;
 	
-	switch(__DD[i][cd_Type]) {
+	switch(__C_DoorInfo[i][cd_Type]) {
 		case DOOR_TYPE_ROTATING: {
-			if(__DD[i][cd_State] == DOOR_CLOSED) {
-				MoveDynamicObject(__DD[i][cd_ObjectID], __DD[i][cd_StartX], __DD[i][cd_StartY], __DD[i][cd_StartZ] + 0.0001, speed, __DD[i][cd_EndRY], __DD[i][cd_EndRY], __DD[i][cd_EndRZ]);
-				__DD[i][cd_State] = DOOR_OPEN;
+			if(__C_DoorInfo[i][cd_State] == DOOR_STATE_CLOSED) {
+				MoveDynamicObject(__C_DoorInfo[i][cd_ObjectID], __C_DoorInfo[i][cd_StartX], __C_DoorInfo[i][cd_StartY], __C_DoorInfo[i][cd_StartZ] + 0.00001, speed, __C_DoorInfo[i][cd_EndRY], __C_DoorInfo[i][cd_EndRY], __C_DoorInfo[i][cd_EndRZ]);
+				__C_DoorInfo[i][cd_State] = DOOR_STATE_OPEN;
 			}
-			else if(__DD[i][cd_State] == DOOR_OPEN) {
-				MoveDynamicObject(__DD[i][cd_ObjectID], __DD[i][cd_StartX], __DD[i][cd_StartY], __DD[i][cd_StartZ] - 0.0001, speed, __DD[i][cd_StartRY], __DD[i][cd_StartRY], __DD[i][cd_StartRZ]);
-				__DD[i][cd_State] = DOOR_CLOSED;
+			else if(__C_DoorInfo[i][cd_State] == DOOR_STATE_OPEN) {
+				MoveDynamicObject(__C_DoorInfo[i][cd_ObjectID], __C_DoorInfo[i][cd_StartX], __C_DoorInfo[i][cd_StartY], __C_DoorInfo[i][cd_StartZ] - 0.00001, speed, __C_DoorInfo[i][cd_StartRY], __C_DoorInfo[i][cd_StartRY], __C_DoorInfo[i][cd_StartRZ]);
+				__C_DoorInfo[i][cd_State] = DOOR_STATE_CLOSED;
 			}
 		}
 		case DOOR_TYPE_SLIDING: {
-			if(__DD[i][cd_State] == DOOR_CLOSED) {
-				MoveDynamicObject(__DD[i][cd_ObjectID], __DD[i][cd_EndX], __DD[i][cd_EndY], __DD[i][cd_EndZ], Speed);
-				__DD[i][cd_State] = DOOR_OPEN;
+			if(__C_DoorInfo[i][cd_State] == DOOR_STATE_CLOSED) {
+				MoveDynamicObject(__C_DoorInfo[i][cd_ObjectID], __C_DoorInfo[i][cd_EndX], __C_DoorInfo[i][cd_EndY], __C_DoorInfo[i][cd_EndZ], speed);
+				__C_DoorInfo[i][cd_State] = DOOR_STATE_OPEN;
 			}
-			else if(__DD[i][cd_State] == DOOR_OPEN) {
-				MoveDynamicObject(__DD[i][cd_ObjectID], __DD[i][cd_StartX], __DD[i][cd_StartY], __DD[i][cd_StartZ], Speed);
-				__DD[i][cd_State] = DOOR_CLOSED;
+			else if(__C_DoorInfo[i][cd_State] == DOOR_STATE_OPEN) {
+				MoveDynamicObject(__C_DoorInfo[i][cd_ObjectID], __C_DoorInfo[i][cd_StartX], __C_DoorInfo[i][cd_StartY], __C_DoorInfo[i][cd_StartZ], speed);
+				__C_DoorInfo[i][cd_State] = DOOR_STATE_CLOSED;
 			}
 		}
 		case DOOR_TYPE_TELEPORT: {
-			if(!IsPlayerConnected(playerid) || IsPlayerInRangeOfDynamicDoor(playerid, door, speed))
+			if(!IsPlayerConnected(playerid) || IsPlayerInRangeOfDynamicDoor(playerid, doorid, speed))
 				return 0;
 				
-			SetPlayerPos(playerid, __DD[i][cd_EndX], __DD[i][cd_EndY], __DD[i][cd_EndZ]);
-			SetPlayerPos(playerid, __DD[i][cd_EndRZ]);
+			SetPlayerPos(playerid, __C_DoorInfo[i][cd_EndX], __C_DoorInfo[i][cd_EndY], __C_DoorInfo[i][cd_EndZ]);
+			SetPlayerFacingAngle(playerid, __C_DoorInfo[i][cd_EndRZ]);
 		}
 	}
 	
@@ -315,8 +315,19 @@ stock ActivateDynamicDoor(Door:doorid, Float:speed = 1.0, playerid = INVALID_PLA
 </remarks>
 \**--------------------------------------------------------------------------**/
 
-#define DestroyDynamicDoor(%0) \
-	(DestroyDynamicObject(__DD[_:%0][cd_ObjectID]))
+stock DestroyDynamicDoor(Door:doorid)
+{
+	if(!Iter_Contains(__Door, _:doorid))
+		return 0;
+	
+	new i = _:doorid;
+    
+	__C_DoorInfo[i][cd_State] = DOOR_STATE_CLOSED;
+	DestroyDynamicObject(__C_DoorInfo[i][cd_ObjectID]);
+    Iter_Remove(__Door, i);
+    
+    return 1;
+}
 
 /**--------------------------------------------------------------------------**\
 <summary>
@@ -336,19 +347,19 @@ stock ActivateDynamicDoor(Door:doorid, Float:speed = 1.0, playerid = INVALID_PLA
 
 /**--------------------------------------------------------------------------**\
 <summary>
-	bool:GetDynamicDoorObjectID
+	GetDynamicDoorObjectID
 </summary>
 	<param name="Door:doorid">Door ID</param>
 <returns>
 	Streamer ID if door is valid
-	INVALID_DOOR_ID if door is not valid
+	INVALID_OBJECT_ID if door is not valid
 </returns>
 <remarks>
 </remarks>
 \**--------------------------------------------------------------------------**/
 
 #define GetDynamicDoorObjectID(%0) \
-	(!IsValidDynamicDoor(%0) ? INVALID_DOOR_ID : __DD[_:%0][cd_ObjectID])
+	(!IsValidDynamicDoor(%0) ? INVALID_OBJECT_ID : __C_DoorInfo[_:%0][cd_ObjectID])
 
 /**--------------------------------------------------------------------------**\
 <summary>
@@ -366,16 +377,16 @@ stock ActivateDynamicDoor(Door:doorid, Float:speed = 1.0, playerid = INVALID_PLA
 
 stock Door:IsPlayerInRangeOfAnyDynamicDoor(playerid, Float:range = 3.0)
 {
-	foreach(new i: Door)
-		if(IsPlayerInRangeOfPoint(playerid, range, __DD[i][cd_StartX], __DD[i][cd_StartY], __DD[i][cd_StartZ]))
-			return i;
+	foreach(new i: __Door)
+		if(IsPlayerInRangeOfPoint(playerid, range, __C_DoorInfo[i][cd_StartX], __C_DoorInfo[i][cd_StartY], __C_DoorInfo[i][cd_StartZ]))
+			return Door:i;
 
 	return INVALID_DOOR_ID;
 }
 
 /**--------------------------------------------------------------------------**\
 <summary>
-	Door:IsPlayerInRangeOfDynamicDoor
+	IsPlayerInRangeOfDynamicDoor
 </summary>
 	<param name="playerid">Player ID</param>
 	<param name="Door:door">Door ID</param>
@@ -397,8 +408,8 @@ stock IsPlayerInRangeOfDynamicDoor(playerid, Door:door, Float:range = 3.0)
 	new i = _:door;
 	
 	return (
-		IsPlayerInRangeOfPoint(playerid, range, __DD[i][cd_StartX], __DD[i][cd_StartY], __DD[i][cd_StartZ]) ? 1 :
-		__DD[i][cd_Type] == DOOR_TYPE_SLIDING && IsPlayerInRangeOfPoint(playerid, range, __DD[i][cd_EndX], __DD[i][cd_EndY], __DD[i][cd_EndZ]) ? 2 :
+		IsPlayerInRangeOfPoint(playerid, range, __C_DoorInfo[i][cd_StartX], __C_DoorInfo[i][cd_StartY], __C_DoorInfo[i][cd_StartZ]) ? 1 :
+		__C_DoorInfo[i][cd_Type] == DOOR_TYPE_SLIDING && IsPlayerInRangeOfPoint(playerid, range, __C_DoorInfo[i][cd_EndX], __C_DoorInfo[i][cd_EndY], __C_DoorInfo[i][cd_EndZ]) ? 2 :
 		0
 	);
 }
@@ -421,7 +432,7 @@ stock IsPlayerInRangeOfDynamicDoor(playerid, Door:door, Float:range = 3.0)
 
 stock GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z)
 {
-	return Iter_Contains(__Door, _:doorid) ? GetDynamicObjectPos(__DD[_:doorid][cd_ObjectID], X, Y, Z) : 0;
+	return Iter_Contains(__Door, _:doorid) ? GetDynamicObjectPos((__C_DoorInfo[_:doorid][cd_ObjectID]), X, Y, Z) : 0;
 }
 
 /**--------------------------------------------------------------------------**\
@@ -442,5 +453,5 @@ stock GetDynamicDoorPos(Door:doorid, &Float:X, &Float:Y, &Float:Z)
 
 stock GetDynamicDoorRot(Door:doorid, &Float:rX, &Float:rY, &Float:rZ)
 {
-	return Iter_Contains(__Door, _:doorid) ? GetDynamicObjectRot(__DD[_:doorid][cd_ObjectID], rX, rY, rZ) : 0;
+	return Iter_Contains(__Door, _:doorid) ? GetDynamicObjectRot((__C_DoorInfo[_:doorid][cd_ObjectID]), rX, rY, rZ) : 0;
 }
